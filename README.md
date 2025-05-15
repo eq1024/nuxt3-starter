@@ -19,21 +19,21 @@ git clone https://github.com/eq1024/nuxt-template.git
 2. 安装依赖
 
 ```shell
-yarn -v 	// 1.22.22
-node -v		// v20.12.0
-yarn
+pnpm -v // 1.10.8
+node -v	// v20.19.0
+pnpm i
 ```
 
 3. 运行项目
 
 ```shell
-yarn dev	//  > Local:    http://localhost:3000/ 
+pnpm dev //  > Local:    http://localhost:3000/
 ```
 
 4. 打包项目
 
 ```shell
-yarn build //输出在.nuxt项目
+pnpm build //输出在.nuxt项目
 ```
 
 5. 部署项目
@@ -59,11 +59,9 @@ pm2 start .\ecosystem.config.js
 
 ```
 
-
 ### 说明
 !! 特别注意
 CSS中引用缺失图片会触发`nuxt.config`中设置的默认语言强制覆盖cookie中存储的语言设置，导致再次访问`/`时语言重定向逻辑异常。具体表现为：当存在语言cookie时，缺失资源请求会提升`nuxt.config`中默认语言优先级使其超越cookie造成覆写问题，导致再次访问首页/路径时直接采用被覆盖的错误cookie值，造成语言显示错误。需确保资源引用有效或调整语言检测逻辑优先级来修复。
-
 
 #### 环境变量的使用
 
@@ -84,8 +82,8 @@ CSS中引用缺失图片会触发`nuxt.config`中设置的默认语言强制覆�
 
 ```ts
 const config = useRuntimeConfig()
-console.log('BASE_URL', config.public.BASE_URL)	 // example url
-console.log('test', config.public.test)	 // test value
+console.log('BASE_URL', config.public.BASE_URL) // example url
+console.log('test', config.public.test) // test value
 ```
 
 **dotenv使用**
@@ -123,7 +121,7 @@ NUXT_BASE_ROOT = 'https://bing.com'
 
 ```ts
 const config = useRuntimeConfig()
-console.log('BASE_URL', config.public.BASE_URL)	 //  https://baidu.com 或 https://bing.com
+console.log('BASE_URL', config.public.BASE_URL) //  https://baidu.com 或 https://bing.com
 ```
 
 #### 请求封装
@@ -172,8 +170,6 @@ export function useRequest<T = unknown>(
 
 其他NUXT功能已提供示例,具体使用见官方[文档](https://nuxt.com/)
 
-
-
 路由守卫
 
 `/middleware`目录下已`.global.ts`结尾的函数将自动在全局路由时执行
@@ -194,6 +190,3 @@ definePageMeta({
   middleware: ['root-middle'], // 指定执行
 })
 ```
-
-
-

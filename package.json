@@ -1,10 +1,10 @@
 {
   "private": true,
   "nodeVersion": ">=20.18.0",
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "pnpm@10.8.0",
   "engines": {
     "node": ">=20.18.0",
-    "yarn": "^1.22.22"
+    "pnpm": ">=10.8.0"
   },
   "scripts": {
     "build": "nuxi build --dotenv .env.production",
@@ -19,7 +19,7 @@
     "three": "^0.174.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.3",
+    "@antfu/eslint-config": "^4.13.0",
     "@iconify-json/carbon": "^1.1.16",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/i18n": "9.2.0",
@@ -28,7 +28,7 @@
     "@types/three": "^0.174.0",
     "@unocss/nuxt": "66.0.0",
     "@vueuse/nuxt": "^9.13.0",
-    "eslint": "^8.36.0",
+    "eslint": "^9.26.0",
     "nuxt": "3.15.4",
     "nuxt-lodash": "^2.4.1",
     "pinia": "^2.0.33",

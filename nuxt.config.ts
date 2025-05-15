@@ -1,8 +1,6 @@
 import { appDescription } from './constants/index'
 import { currentLocales } from './i18n'
 
-console.log('环境', process.env.NUXT_BASE_ROOT)
-
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', 'nuxt-lodash', '@nuxtjs/i18n', '@unocss/nuxt'],
 
@@ -57,7 +55,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: false,
       routes: ['/'],
-      /** 浏览器访问会自动匹配目录下的index.html
+      /**
+       * 浏览器访问会自动匹配目录下的index.html
        * 但是nitro不会,所以造成服务端认为404 客户端又找得到
        * 需要将文件目录加入到ignore中,以保证浏览器访问正常
        */
