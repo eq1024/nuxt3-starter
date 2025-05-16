@@ -19,12 +19,12 @@ git clone https://github.com/eq1024/nuxt-template.git
 2. 安装依赖
 
 ```shell
-pnpm -v // 1.10.8
 node -v	// v20.19.0
+pnpm -v // 10.8.0
 pnpm i
 ```
 
-3. 运行项目
+1. 运行项目
 
 ```shell
 pnpm dev //  > Local:    http://localhost:3000/
