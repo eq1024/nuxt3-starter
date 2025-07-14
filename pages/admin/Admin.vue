@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <E style="padding-top: .8rem;" />
+  <Icon name="carbon:asset-digital-twin" />
 </template>

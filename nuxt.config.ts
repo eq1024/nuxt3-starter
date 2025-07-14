@@ -1,8 +1,11 @@
+// import AutoImport from 'unplugin-auto-import/vite'
+// import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+// import Components from 'unplugin-vue-components/vite'
 import { appDescription } from './constants/index'
 import { currentLocales } from './i18n'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', 'nuxt-lodash', '@nuxtjs/i18n', '@unocss/nuxt'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-lodash', '@unocss/nuxt', '@element-plus/nuxt', '@nuxtjs/i18n', '@nuxt/icon'],
 
   experimental: {
     payloadExtraction: false,
@@ -14,12 +17,8 @@ export default defineNuxtConfig({
 
   css: [
     '@/static/css/normalize.css',
+    // 'naive-ui/style/index.css',
   ],
-
-  colorMode: {
-    classSuffix: '',
-    preference: 'light',
-  },
 
   runtimeConfig: {
     public: {
@@ -33,7 +32,7 @@ export default defineNuxtConfig({
     restructureDir: '',
     langDir: 'locales/',
     defaultLocale: 'en',
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
     vueI18n: './i18n.config.ts',
     // 启用浏览器语言检测，以便在访问者第一次访问您的站点时自动将其重定向到首选语言环境。
     detectBrowserLanguage: {
@@ -98,9 +97,9 @@ static and swr - static支持单个(按需)构建;swr启用静态构建，该构
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-        { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css' },
-        { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.0/swiper-bundle.min.css' },
-        { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/notyf/3.10.0/notyf.min.css' },
+        // { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css' },
+        // { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.0/swiper-bundle.min.css' },
+        // { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/notyf/3.10.0/notyf.min.css' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -108,14 +107,14 @@ static and swr - static支持单个(按需)构建;swr启用静态构建，该构
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
       script: [
-        { type: 'text/javascript', src: '/js/flexible.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/wow/1.1.2/wow.min.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.0/swiper-bundle.min.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/counterup2/2.0.2/index.min.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/notyf/3.10.0/notyf.umd.js' },
-        { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js' },
+        // { type: 'text/javascript', src: '/js/flexible.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/wow/1.1.2/wow.min.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.0/swiper-bundle.min.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/counterup2/2.0.2/index.min.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/notyf/3.10.0/notyf.umd.js' },
+        // { type: 'text/javascript', src: 'https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js' },
       ],
     },
   },

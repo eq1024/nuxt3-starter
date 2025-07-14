@@ -2,10 +2,11 @@
 import { storeToRefs } from 'pinia'
 // const router = useRouter()
 
-const time1 = new Date().getTime()
+// const time1 = new Date().getTime()
 
 const post1 = ref('')
 const post2 = ref('')
+const EditorShow = ref(false)
 const { userName } = storeToRefs(useUserStore())
 interface post {
   userId: string
@@ -30,6 +31,8 @@ post1.value = JSON.stringify(data.value?.body) || ''
  */
 function getAsyncData() {
   useRequest<post>('https://jsonplaceholder.typicode.com/posts/1', { method: 'GET' }).then((res) => {
+    console.log('🤔 - :34 - useRequest<post> - res--> ', res)
+
     post2.value = JSON.stringify(data.value?.body) || ''
   })
 }
@@ -38,32 +41,23 @@ function getAsyncData() {
 const config = useRuntimeConfig()
 const NUXT_BASE_ROOT = config.public.BASE_URL
 
-const sphere: Ref<HTMLElement | null> = ref(null)
-const a = ref(500)
-
 onMounted(() => {
-  console.log('时间2:', new Date().getTime())
-
-  const commonJS = document.createElement('script')
-  commonJS.src = '/js/common.js'
-  document.body.append(commonJS)
-  if (sphere !== null && sphere.value !== null) {
-    const { init } = useSphere(sphere as Ref<HTMLElement>, a, a)
-    init()
-  }
+  // const commonJS = document.createElement('script')
+  // commonJS.src = '/js/common.js'
+  // document.body.append(commonJS)
 })
 </script>
 
 <template>
-  <div style="font-size: .2rem;">
-    <div>时间1 : {{ time1 }}</div>
+  <div>
+    <!-- <div>时间1 : {{ time1 }}</div> -->
     <div class="fromSiv">
       <NuxtLinkLocale to="/admin">
         Admin(客户端渲染CSR)
       </NuxtLinkLocale>
       <div style="padding-bottom: 20px;">
         下面的异步请求内容是在服务端完成的
-        {{ $t('kk') }}
+        <!-- {{ $t('kk') }} -->
       </div>
       <div>{{ post1 }}</div>
     </div>
@@ -90,7 +84,12 @@ onMounted(() => {
     <div class="fromSiv">
       打开控制台,方便查看钩子函数的执行情况
     </div>
-    <div ref="sphere" class="fixed top-0 left-0 w-full h-full" />
+    <el-button @click="EditorShow = !EditorShow">
+      编辑器
+    </el-button>
+    <div style="max-width: 600px;margin: 0 auto;">
+      <LazyEditor v-if="EditorShow" />
+    </div>
   </div>
 </template>
 

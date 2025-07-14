@@ -3,9 +3,9 @@ definePageMeta({
   layout: 'home',
 })
 onMounted(() => {
-  const commonJS = document.createElement('script')
-  commonJS.src = '/js/common.js'
-  document.body.append(commonJS)
+  // const commonJS = document.createElement('script')
+  // commonJS.src = '/js/common.js'
+  // document.body.append(commonJS)
 })
 onBeforeRouteLeave((to, from) => {
   console.log('组件内的守卫', to, from)

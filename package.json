@@ -1,5 +1,6 @@
 {
   "private": true,
+  "packageManager": "pnpm@9.15.0+sha1.8bfdb6d72b4d5fdf87d21d27f2bfbe2b21dd2629",
   "engines": {
     "node": ">=20.18.0"
   },
@@ -13,20 +14,21 @@
     "start:generate": "npx serve .output/public"
   },
   "dependencies": {
-    "three": "^0.174.0"
+    "vditor": "^3.11.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.0",
+    "@element-plus/nuxt": "^1.1.4",
     "@iconify-json/carbon": "^1.1.16",
-    "@nuxtjs/color-mode": "^3.2.0",
-    "@nuxtjs/i18n": "9.2.0",
+    "@nuxt/icon": "^1.15.0",
+    "@nuxtjs/i18n": "^9.5.6",
     "@pinia/nuxt": "^0.4.7",
     "@types/node": "^18.15.11",
-    "@types/three": "^0.174.0",
     "@unocss/nuxt": "66.0.0",
     "@vueuse/nuxt": "^9.13.0",
+    "element-plus": "^2.10.4",
     "eslint": "^9.26.0",
-    "nuxt": "3.15.4",
+    "nuxt": "^3.17.7",
     "nuxt-lodash": "^2.4.1",
     "pinia": "^2.0.33",
     "sass": "^1.62.0",

@@ -1,5 +1,6 @@
 <script  lang="ts">
 import { appName } from '~/constants'
+
 export default {
   setup() {
     useHead({
