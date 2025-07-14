@@ -5,7 +5,8 @@ time.value = String(new Date())
 
 <template>
   <div style="font-size: 1rem;">
-    admin {{ time }}
+    test {{ time }}
+    <el-button>测试按钮</el-button>
   </div>
 </template>
 
