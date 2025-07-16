@@ -7,3 +7,5 @@ export default defineNuxtPlugin(() => {
     },
   }
 })
+// 使用
+// const { $Router } = useNuxtApp();

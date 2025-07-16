@@ -3,7 +3,7 @@ import { appDescription } from './constants/index'
 import { currentLocales } from './i18n'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-lodash', '@unocss/nuxt', '@element-plus/nuxt', '@nuxtjs/i18n', '@nuxt/icon'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-lodash', '@unocss/nuxt', '@element-plus/nuxt', '@nuxtjs/i18n', '@nuxt/icon', 'dayjs-nuxt'],
 
   experimental: {
     payloadExtraction: false,

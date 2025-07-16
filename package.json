@@ -13,9 +13,6 @@
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public"
   },
-  "dependencies": {
-    "vditor": "^3.11.1"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.0",
     "@element-plus/nuxt": "^1.1.4",
@@ -26,6 +23,8 @@
     "@types/node": "^24.0.13",
     "@unocss/nuxt": "^66.0.0",
     "@vueuse/nuxt": "^9.13.0",
+    "dayjs": "^1.11.13",
+    "dayjs-nuxt": "2.1.11",
     "element-plus": "^2.10.4",
     "eslint": "^9.26.0",
     "nuxt": "^3.17.7",
