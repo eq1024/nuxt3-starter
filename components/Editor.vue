@@ -69,7 +69,7 @@ function openLinkDialog() {
   linkForm.value = {
     text: selectedText,
     url: '',
-    newWindow: false,
+    newWindow: true,
   }
 
   linkDialogVisible.value = true
@@ -103,17 +103,17 @@ function insertLink() {
   <div class="editor-container">
     <div class="formatted-text-editor">
       <div class="toolbar">
-        <ElButton icon="document" @click="insertFormatting('bold')">
-          加粗
+        <ElButton @click="insertFormatting('bold')">
+          <Icon name="carbon:text-bold" /> 加粗
         </ElButton>
-        <ElButton icon="edit" @click="insertFormatting('italic')">
-          斜体
+        <ElButton @click="insertFormatting('italic')">
+          <Icon name="carbon:text-italic" /> 斜体
         </ElButton>
-        <ElButton icon="underline" @click="insertFormatting('underline')">
-          下划线
+        <ElButton @click="insertFormatting('underline')">
+          <Icon name="carbon:text-underline" /> 下划线
         </ElButton>
-        <ElButton icon="link" @click="openLinkDialog">
-          链接
+        <ElButton @click="openLinkDialog">
+          <Icon name="carbon:link" /> 链接
         </ElButton>
       </div>
 
