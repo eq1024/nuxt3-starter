@@ -7,7 +7,7 @@ const linkDialogVisible = ref(false)
 const linkForm = ref({
   text: '',
   url: '',
-  newWindow: false,
+  newWindow: true,
 })
 
 function insertFormatting(format: string) {
@@ -33,10 +33,27 @@ function insertFormatting(format: string) {
 
   rawContent.value = rawContent.value.substring(0, start) + formattedText + rawContent.value.substring(end)
 
-  // Move cursor to after the inserted text
+  // Move cursor to after the inserted text or in the middle of selected text
   setTimeout(() => {
     textarea.focus()
-    textarea.setSelectionRange(start + formattedText.length, start + formattedText.length)
+    if (selectedText) {
+      // If text was selected, put cursor at the end of the selection
+      textarea.setSelectionRange(start + formattedText.length, start + formattedText.length)
+    }
+    else {
+      // If no text was selected, put cursor in the middle of the inserted format
+      let cursorPosition = start
+      if (format === 'bold') {
+        cursorPosition = start + 3 // After ***|
+      }
+      else if (format === 'italic') {
+        cursorPosition = start + 2 // After ~~|
+      }
+      else if (format === 'underline') {
+        cursorPosition = start + 2 // After ++|
+      }
+      textarea.setSelectionRange(cursorPosition, cursorPosition)
+    }
   }, 0)
 }
 
