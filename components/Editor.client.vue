@@ -111,6 +111,37 @@ function insertLink() {
       </div>
       <FormattedText :content="rawContent" />
     </div>
+
+    <ElDialog
+      v-model="linkDialogVisible"
+      title="插入链接"
+      :close-on-click-modal="false"
+      width="400px"
+    >
+      <ElForm class="link-form" label-position="top">
+        <ElFormItem label="链接文本">
+          <ElInput v-model="linkForm.text" placeholder="请输入链接文本" />
+        </ElFormItem>
+        <ElFormItem label="链接地址">
+          <ElInput v-model="linkForm.url" placeholder="https://example.com" />
+        </ElFormItem>
+        <ElFormItem>
+          <ElCheckbox v-model="linkForm.newWindow">
+            在新窗口打开
+          </ElCheckbox>
+        </ElFormItem>
+      </ElForm>
+      <template #footer>
+        <div class="dialog-footer">
+          <ElButton @click="linkDialogVisible = false">
+            取消
+          </ElButton>
+          <ElButton type="primary" @click="insertLink">
+            确定
+          </ElButton>
+        </div>
+      </template>
+    </ElDialog>
   </div>
 </template>
 
@@ -136,6 +167,9 @@ function insertLink() {
 .preview-label {
   margin-top: 1rem;
   font-weight: bold;
+}
+.link-form {
+  margin-bottom: 1.5rem;
 }
 .link-form .form-group {
   margin-bottom: 1.5rem;
