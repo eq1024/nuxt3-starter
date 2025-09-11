@@ -1,0 +1,289 @@
+{
+  "about": {
+    "hero": {
+      "subtitle": "A professional self-repair tutorial platform for devices — making repairs simple, clear, and doable.",
+      "title": "About Us"
+    },
+    "partners": {
+      "description": "We collaborate with forward-thinking manufacturers who support repairability by offering genuine parts, technical documentation, and expert guidance — all to help you fix your devices with confidence.",
+      "title": "Partners"
+    }
+  },
+  "cart": {
+    "checkout": "Checkout",
+    "empty": "Your cart is empty.",
+    "shipping_note": "Shipping and taxes will be calculated at checkout.",
+    "subtotal": "Subtotal",
+    "title": "Your cart ({count})"
+  },
+  "category": {
+    "deleteWarning": "This category cannot be deleted while subcategories still exist. Please remove them before proceeding."
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "save": "Save",
+    "tip": "Tip"
+  },
+  "customerEditor": {
+    "dialog": {
+      "insertLink": {
+        "newWindow": "Open in new window",
+        "textLabel": "Link Text",
+        "textPlaceholder": "Enter link text",
+        "title": "Insert Link",
+        "urlLabel": "Link URL",
+        "urlPlaceholder": "https://example.com"
+      }
+    },
+    "placeholder": "Enter formatted text, e.g., ***bold*** ~~italic~~ ++underline++ [link|https://example.com|new_window=true|link text]"
+  },
+  "guide": {
+    "add": {
+      "create": "Create",
+      "message": {
+        "formError": "Form validation failed",
+        "loadError": "Failed to load initial data.",
+        "saveFailed": "Failed to create guide.",
+        "saveSuccess": "Guide created successfully."
+      },
+      "next": "Next",
+      "previous": "previous"
+    },
+    "common": {
+      "dialog": {
+        "cropImage": "Crop Image",
+        "editImage": "Edit Image"
+      },
+      "form": {
+        "conclusion": "Conclusion",
+        "coverImage": "Cover Image",
+        "device": "Device",
+        "difficulty": "Difficulty estimate",
+        "difficultyOptions": {
+          "difficult": "difficult",
+          "moderate": "moderate",
+          "very_difficult": "very difficult",
+          "very_easy": "very easy"
+        },
+        "introduction": "Introduction",
+        "partName": "What part are you replacing?",
+        "parts": "Parts",
+        "selectPlaceholder": "Select",
+        "timeEstimate": "Time estimate",
+        "title": "Title",
+        "tools": "Tools"
+      },
+      "message": {
+        "deleteImageConfirm": "Are you sure you want to delete this image?",
+        "validation": {
+          "device": "Please select a device",
+          "img": "Please upload an image",
+          "level": "Please select a difficulty",
+          "name": "Please enter the part name",
+          "time": "Please enter a valid time range"
+        }
+      },
+      "tabs": {
+        "details": "Details",
+        "introduction": "Introduction"
+      }
+    },
+    "edit": {
+      "loading": "Loading...",
+      "message": {
+        "changesSaved": "Changes have been saved",
+        "deleteFailed": "Failed to delete step",
+        "deleteLastStepError": "This is the last step and cannot be deleted.",
+        "deleteStepConfirm": "Are you sure you want to delete this step? This action cannot be undone.",
+        "deleteSuccess": "Deleted successfully",
+        "imageContextError": "Cannot find image context",
+        "newStepAdded": "New step has been added",
+        "saveFailed": "Failed to save",
+        "saveSuccess": "Saved successfully",
+        "stepDeleted": "Step has been deleted",
+        "stepNotFound": "Could not find the step to delete"
+      },
+      "steps": {
+        "add": "Add new step",
+        "edit": "Edit",
+        "newTitle": "New Step {sort}",
+        "title": "Steps"
+      },
+      "tabs": {
+        "guideSteps": "Guide Steps"
+      }
+    },
+    "type": {
+      "disassemble": "Disassemble",
+      "label": "Type",
+      "replace": "Replacement",
+      "teardown": "Teardown"
+    }
+  },
+  "header": {
+    "admin": "Admin",
+    "cancelButtonText": "Cancel",
+    "cart": "Cart",
+    "confirmButtonText": "Confirm",
+    "logout": "Logout",
+    "logoutConfirmText": "Are you sure you want to log out?",
+    "logoutConfirmTitle": "Confirm Logout",
+    "partsStore": "Parts Store",
+    "searchPlaceholder": "Search for repair guides",
+    "signIn": "Sign In",
+    "tutorials": "Tutorials"
+  },
+  "home": {
+    "featuredCategories": {
+      "electricScooters": {
+        "description": "E-scooters of various brands",
+        "name": "Electric Scooters"
+      },
+      "guides": "{count} guides",
+      "headphones": {
+        "description": "Headphones / Earbuds of various brands",
+        "name": "Headphones / Earbuds"
+      },
+      "powerStation": {
+        "description": "Power Station of various brands",
+        "name": "Portable Power Station"
+      },
+      "robotVacuums": {
+        "description": "Robot vacuums of various brands",
+        "name": "Robot Vacuums"
+      },
+      "roboticLawnMowers": {
+        "description": "Lawn Mowers of various brands",
+        "name": "Robotic Lawn Mowers"
+      },
+      "smartPhones": {
+        "description": "Smart phones of various brands",
+        "name": "Smart phones"
+      },
+      "subtitle": "Browse repair guides by device category. We have comprehensive tutorials for your devices.",
+      "title": "Featured Categories"
+    },
+    "popularTutorials": {
+      "byAuthor": "By {author} · {source}",
+      "luba": {
+        "author": "[Author Name]",
+        "category": "Robotic Lawn Mower",
+        "description": "The side brush motor powers the side brush as it sweeps dirt and debris from hard-to-reach corners...",
+        "difficulty": "Difficult",
+        "duration": "40 - 85 minutes",
+        "source": "Community User",
+        "title": "LUBA 2 AWD Motor Replacement"
+      },
+      "roborock": {
+        "author": "[Author Name]",
+        "category": "Robot Vacuum",
+        "description": "The side brush motor powers the side brush as it sweeps dirt and debris from hard-to-reach corners...",
+        "difficulty": "Easy",
+        "duration": "20 minutes",
+        "source": "Platform Author",
+        "title": "Roborock Q5 Side Brush Motor Replacement"
+      },
+      "subtitle": "Most viewed repair guides this month",
+      "title": "Popular Tutorials",
+      "unicool": {
+        "author": "[Author Name]",
+        "category": "Electric Scooter",
+        "description": "This guide will show you how to remove the battery in the Titan T8 electric scooter. It involves a complete ....",
+        "difficulty": "Moderate",
+        "duration": "30 - 60 minutes",
+        "source": "Manufacturer",
+        "title": "Unicool Titan T8 Battery Replacement"
+      },
+      "viewAll": "View All Tutorials"
+    },
+    "whyChooseUs": {
+      "communitySupport": {
+        "description": "Active user community for sharing experiences, answering questions, and learning together",
+        "title": "Community Support"
+      },
+      "expertGuides": {
+        "description": "Step-by-step guides with visuals make complex repairs straightforward",
+        "title": "Expert Guides"
+      },
+      "originalParts": {
+        "description": "OEM parts and quality alternatives to ensure self-repair quality and device performance",
+        "title": "Original Parts"
+      },
+      "title": "Why choose us?"
+    }
+  },
+  "kk": "11",
+  "layout": {
+    "admin": {
+      "title": "[This is the HOME layout]"
+    }
+  },
+  "login": {
+    "captchaAlt": "Captcha Image",
+    "captchaError": "Failed to load captcha, please try again.",
+    "captchaLabel": "Captcha",
+    "captchaPlaceholder": "Please enter the captcha",
+    "loginButton": "Login",
+    "loginFailed": "Login failed, please check your credentials and try again.",
+    "loginSuccess": "Login successful!",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Please enter your password",
+    "title": "Login",
+    "usernameLabel": "Username",
+    "usernamePlaceholder": "Please enter your username"
+  },
+  "notFound": {
+    "description": "Sorry, the page you are looking for could not be found.",
+    "goHome": "Go to Homepage",
+    "title": "404 - Page Not Found"
+  },
+  "oldd": {
+    "about": "about",
+    "adminCSR": "Admin(Client Side Rendering CSR)",
+    "button": "button",
+    "click": "Click",
+    "csrRequest": "to send a client-side asynchronous request",
+    "currentBaseUrl": "Current NUXT_BASE_ROOT is:",
+    "editor": "Editor",
+    "envUsage": "env usage",
+    "openConsole": "Open the console to facilitate viewing the execution of hook functions",
+    "ssrRequest": "The following asynchronous request content is completed on the server side",
+    "tutorial": "tutorial"
+  },
+  "richEditor": {
+    "placeholder": "please input..."
+  },
+  "tutorialStep": {
+    "dialog": {
+      "cropImage": {
+        "title": "Crop Image"
+      },
+      "editImage": {
+        "title": "Edit Image"
+      }
+    },
+    "editTitle": {
+      "errorMessage": "Title cannot be empty",
+      "promptMessage": "Please enter the title",
+      "title": "Edit Title"
+    },
+    "editingStep": "Editing Step {sort}",
+    "image": "Image",
+    "imageIndexError": "Cannot find image index",
+    "media": "Media",
+    "noImageSelected": "No Image Selected",
+    "saveMessage": "Save operation",
+    "setImage": {
+      "promptMessage": "Please enter the image URL",
+      "title": "Set Image"
+    },
+    "stepType": "Step Type:",
+    "video": "video"
+  },
+  "user": {
+    "defaultName": "Look! This is the default value from pinia, and it's also the title value",
+    "guest": "Guest"
+  }
+}
