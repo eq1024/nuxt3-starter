@@ -5,7 +5,7 @@ const { globalLoading } = useGlobalLoading()
 </script>
 
 <template>
-  <main class="flex flex-col min-h-screen">
+  <main class="flex flex-col min-h-screen bg-#525F7F">
     <LayoutHeader />
     <div v-loading="globalLoading" class="flex-grow-1">
       <slot>

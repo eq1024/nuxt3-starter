@@ -7,7 +7,7 @@ const linkDialogVisible = ref(false)
 const linkForm = ref({
   text: '',
   url: '',
-  newWindow: false,
+  newWindow: true,
 })
 
 function insertFormatting(format: string) {
@@ -33,10 +33,27 @@ function insertFormatting(format: string) {
 
   rawContent.value = rawContent.value.substring(0, start) + formattedText + rawContent.value.substring(end)
 
-  // Move cursor to after the inserted text
+  // Move cursor to after the inserted text or in the middle of selected text
   setTimeout(() => {
     textarea.focus()
-    textarea.setSelectionRange(start + formattedText.length, start + formattedText.length)
+    if (selectedText) {
+      // If text was selected, put cursor at the end of the selection
+      textarea.setSelectionRange(start + formattedText.length, start + formattedText.length)
+    }
+    else {
+      // If no text was selected, put cursor in the middle of the inserted format
+      let cursorPosition = start
+      if (format === 'bold') {
+        cursorPosition = start + 3 // After ***|
+      }
+      else if (format === 'italic') {
+        cursorPosition = start + 2 // After ~~|
+      }
+      else if (format === 'underline') {
+        cursorPosition = start + 2 // After ++|
+      }
+      textarea.setSelectionRange(cursorPosition, cursorPosition)
+    }
   }, 0)
 }
 
@@ -52,7 +69,7 @@ function openLinkDialog() {
   linkForm.value = {
     text: selectedText,
     url: '',
-    newWindow: false,
+    newWindow: true,
   }
 
   linkDialogVisible.value = true
@@ -86,17 +103,17 @@ function insertLink() {
   <div class="editor-container">
     <div class="formatted-text-editor">
       <div class="toolbar">
-        <ElButton icon="document" @click="insertFormatting('bold')">
-          加粗
+        <ElButton @click="insertFormatting('bold')">
+          <Icon name="carbon:text-bold" /> 加粗
         </ElButton>
-        <ElButton icon="edit" @click="insertFormatting('italic')">
-          斜体
+        <ElButton @click="insertFormatting('italic')">
+          <Icon name="carbon:text-italic" /> 斜体
         </ElButton>
-        <ElButton icon="underline" @click="insertFormatting('underline')">
-          下划线
+        <ElButton @click="insertFormatting('underline')">
+          <Icon name="carbon:text-underline" /> 下划线
         </ElButton>
-        <ElButton icon="link" @click="openLinkDialog">
-          链接
+        <ElButton @click="openLinkDialog">
+          <Icon name="carbon:link" /> 链接
         </ElButton>
       </div>
 
@@ -111,6 +128,37 @@ function insertLink() {
       </div>
       <FormattedText :content="rawContent" />
     </div>
+
+    <ElDialog
+      v-model="linkDialogVisible"
+      title="插入链接"
+      :close-on-click-modal="false"
+      width="400px"
+    >
+      <ElForm class="link-form" label-position="top">
+        <ElFormItem label="链接文本">
+          <ElInput v-model="linkForm.text" placeholder="请输入链接文本" />
+        </ElFormItem>
+        <ElFormItem label="链接地址">
+          <ElInput v-model="linkForm.url" placeholder="https://example.com" />
+        </ElFormItem>
+        <ElFormItem>
+          <ElCheckbox v-model="linkForm.newWindow">
+            在新窗口打开
+          </ElCheckbox>
+        </ElFormItem>
+      </ElForm>
+      <template #footer>
+        <div class="dialog-footer">
+          <ElButton @click="linkDialogVisible = false">
+            取消
+          </ElButton>
+          <ElButton type="primary" @click="insertLink">
+            确定
+          </ElButton>
+        </div>
+      </template>
+    </ElDialog>
   </div>
 </template>
 
@@ -136,6 +184,9 @@ function insertLink() {
 .preview-label {
   margin-top: 1rem;
   font-weight: bold;
+}
+.link-form {
+  margin-bottom: 1.5rem;
 }
 .link-form .form-group {
   margin-bottom: 1.5rem;

@@ -3,38 +3,56 @@ import { appDescription } from './constants/index'
 import { currentLocales } from './i18n'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-lodash', '@unocss/nuxt', '@element-plus/nuxt', '@nuxtjs/i18n', '@nuxt/icon', 'dayjs-nuxt'],
+  modules: [
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-lodash',
+    '@unocss/nuxt',
+    '@element-plus/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxt/icon',
+    'dayjs-nuxt',
+  ],
+
+  plugins: [
+    '~/plugins/permission.ts',
+  ],
+
+  vite: {
+    optimizeDeps: {
+      exclude: ['element-plus'],
+    },
+  },
+
+  elementPlus: {
+    installMethods: ['ElLoading', 'ElMessage', 'ElMessageBox', 'ElNotification'],
+  },
 
   experimental: {
     payloadExtraction: false,
-  },
-
-  /**
-   * redirect - Define server-side redirects.
-ssr - 禁用应用程序部分的服务器端渲染，并使用ssr: false使它们仅用于spa。
-cors - 自动添加带有cors: true的cors报头-你可以通过用headers覆盖自定义输出
-headers - 为站点的各个部分添加特定的标题-例如，您的资产
-static and swr - static支持单个(按需)构建;swr启用静态构建，该构建持续一个可配置的TTL。(目前在Netlify上支持完全增量静态生成，Vercel很快就会推出)
-   */
-  routeRules: {
-    // 区分大小写,关闭ssr后,http的doc返回的是空白文档
-    '/admin/**': { ssr: false },
-    '/test/**': { ssr: false },
+    renderJsonPayloads: true,
   },
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 
   css: [
-    '@/static/css/normalize.css',
-    // 'naive-ui/style/index.css',
+    '@/public/css/normalize.css',
+    '@/public/css/font.css',
+    // 'element-plus/dist/index.css',
   ],
 
   runtimeConfig: {
+    // Private keys are only available on the server
+    apiBase: process.env.NUXT_API_BASE,
+    // apiBase: process.env.NUXT_API_BASE || '192.168.2.169/api/',
+
+    // Public keys that are exposed to the client
     public: {
-      BASE_URL: process.env.NUXT_BASE_ROOT,
-      test: 'test value',
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      stripeKey: process.env.NUXT_PUBLIC_STRIPE_KEY,
     },
   },
 
@@ -57,53 +75,54 @@ static and swr - static支持单个(按需)构建;swr启用静态构建，该构
   },
 
   nitro: {
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      /**
-       * 浏览器访问会自动匹配目录下的index.html
-       * 但是nitro不会,所以造成服务端认为404 客户端又找得到
-       * 需要将文件目录加入到ignore中,以保证浏览器访问正常
-       */
-      // ignore: ['/admin'],
-    },
-    devProxy: {
-      'https://imgapi.cn/cos2.php?return=json': {
-        target: 'https://imgapi.cn/cos2.php?return=json',
-        prependPath: true,
-        changeOrigin: true,
-      },
-    },
-    // routeRules: {
-    //   '/admin/**': {
-    //     headers: {
-    //       'Access-Control-Allow-Origin': '*',
-    //     },
-    //     ssr: false,
+    // 为 PM2 多实例部署优化
+    // preset: 'node-cluster',  记得开启
+    // devProxy: {
+    //   '/dev': { // 需要代理的路径前缀
+    //     target: 'http://api.xxxxx.com/api/', // 目标服务器地址
+    //     // target: 'http://192.168.2.169/api/', // 目标服务器地址
+    //     changeOrigin: true, // 修改请求头 Origin 为目标地址（解决跨域关键）
+    //     prependPath: true, // 自动拼接路径（如 /api/user → 目标域名/api/user）
     //   },
     // },
+    routeRules: {
+      '/_nuxt_icon/**': { proxy: '/api/_nuxt_icon/**' },
+    },
   },
-
+  icon: {
+    provider: 'iconify',
+    customCollections: [
+      {
+        prefix: 'carbon',
+        dir: './assets/icons/carbon',
+      },
+    ],
+  },
   app: {
+    baseURL: '/',
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
-        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        // { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
-      script: [],
+      script: [
+        {
+          src: 'https://js.stripe.com/basil/stripe.js',
+        },
+      ],
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
   },
 
   compatibilityDate: '2025-04-14',

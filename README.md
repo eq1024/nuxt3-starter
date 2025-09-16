@@ -1,192 +1,92 @@
-![展示](https://pic-1300230199.cos.ap-guangzhou.myqcloud.com/NewPic/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230508175551.png)
-# SSR项目模板
-> 适用于期望SEO友好的，内容主导型网站，如:公司官网、外贸官网、个人博客等
-### 技术站
-NUXT3 + vite4 + pinia + typescript +eslint
+# Nuxt 3 企业级入门套件
 
-### 目录结构
+<p align="right">
+  <a href="./README.en.md">English</a> | <b>简体中文</b>
+</p>
 
-![目录](https://pic-1300230199.cos.ap-guangzhou.myqcloud.com/2023/202304231052644.png)
+一个功能丰富、企业级的 Nuxt 3 入门套件。旨在为构建现代化、可扩展且易于维护的 Web 应用程序提供坚实的开发基础。
 
-### 使用
+---
 
-1. 下载仓库
+## ✨ 功能特性
 
-```shell
-git clone https://github.com/eq1024/nuxt-template.git
-```
+该入门套件预置了丰富的功能，旨在加速您的开发流程：
 
-2. 安装依赖
+-   **🚀 现代化技术栈**: 基于 **Nuxt 3**、**Vite** 和 **TypeScript**，提供强大且类型安全的开发体验。
+-   **🎨 UI 与样式**:
+    -   **Element Plus**: 集成了广受欢迎的 UI 组件库。
+    -   **UnoCSS**: 按需、原子的 CSS 引擎，实现快速高效的样式开发。
+    -   **Iconify**: 通过 `@nuxt/icon` 轻松使用数万个图标，已预设 Carbon 图标集。
+-   **🗃️ 状态管理**:
+    -   **Pinia**: Vue 官方推荐的、直观的状态管理库。
+    -   **持久化状态**: 使用 `pinia-plugin-persistedstate` 插件，轻松实现会话保持。
+-   **🌐 国际化 (i18n)**:
+    -   **@nuxtjs/i18n**: 全面支持多语言。
+    -   **自动语言检测**: 可根据用户浏览器语言自动重定向。
+-   **🔐 高级权限控制**:
+    -   **路由级守卫**: 全局中间件，用于在路由切换前进行用户身份验证。
+    -   **组件级控制**: 自定义 `v-permission` 指令，可根据用户角色和权限精细控制页面元素的可见性。
+-   **🛠️ 开发者体验**:
+    -   **ESLint**: 使用 `@antfu/eslint-config` 进行严格的代码规范检查。
+    -   **VueUse**: 提供一整套实用的组合式函数集合。
+    -   **自动导入**: 组件、组合式函数和工具函数均可自动导入。
+    -   **Dotenv 支持**: 轻松管理不同环境（如 `.env.dev`, `.env.production`）的配置文件。
+-   **🔌 预集成模块**:
+    -   **富文本编辑器**: `WangEditor` 用于内容创建。
+    -   **图片裁剪**: `vue-cropper` 用于图像处理。
+    -   **拖拽功能**: `vue-draggable-next` 用于实现交互式列表。
+-   **📦 网络请求与上传**:
+    -   **请求封装**: 基于 `$fetch` 封装了 `useRequest`，提供统一的 `BaseURL`、认证头和错误处理。
+    -   **图片上传**: 封装了 `useImageUpload`，简化了文件上传逻辑并提供加载状态。
 
-```shell
-node -v	// v20.19.0
-pnpm -v // 10.8.0
-pnpm i
-```
+---
 
-1. 运行项目
+## ⚙️ 权限指令 (`v-permission`)
 
-```shell
-pnpm dev //  > Local:    http://localhost:3000/
-```
+通过精细的逻辑控制元素的可见性。
 
-4. 打包项目
+-   **用法**: `v-permission="[权限ID, 用户类型, 品牌名称]"`
+-   **示例**:
+    -   `v-permission="[22, 1, 'some-brand']"`: 检查权限 `22`、用户类型 `1` 和品牌名称 `'some-brand'`。
+    -   `v-permission="[22, [1, 2]]"`: 检查权限 `22` 以及用户类型是否为 `1` 或 `2`。
+    -   `v-permission="[22, null, 'covos']"`: 跳过用户类型检查。
+    -   `v-permission="[22]"`: 仅检查权限 `22`。
+    -   `v-permission:debug="[22]"`: 启用指令的调试模式，日志将输出到控制台。
 
-```shell
-pnpm build //输出在.nuxt项目
-```
+---
 
-5. 部署项目
+## 🚀 服务端部署
 
-```shell
-pm2 -v //5.4.3
+### 环境要求
 
-pm2 start .\ecosystem.config.js
+-   Node.js >= 22
+-   pnpm
+-   pm2
 
-```
+### 安装步骤
 
-### 更新记录
-- 2025-02-12 -
-```
+1.  **安装 NVM (Node 版本管理器)**
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    source ~/.bashrc
+    ```
 
-更新NUXT和I18n版本
+2.  **安装并使用 Node.js v22**
+    ```bash
+    nvm install 22
+    nvm use 22
+    ```
 
-清除残留垃圾文件
+3.  **安装全局依赖**
+    ```bash
+    npm install -g pnpm pm2
+    ```
 
-添加PM2部署脚本
+4.  **安装项目依赖**
+    ```bash
+    pnpm install
+    ```
 
-新增i18n使用示例
-
-```
-
-### 说明
-!! 特别注意
-CSS中引用缺失图片会触发`nuxt.config`中设置的默认语言强制覆盖cookie中存储的语言设置，导致再次访问`/`时语言重定向逻辑异常。具体表现为：当存在语言cookie时，缺失资源请求会提升`nuxt.config`中默认语言优先级使其超越cookie造成覆写问题，导致再次访问首页/路径时直接采用被覆盖的错误cookie值，造成语言显示错误。需确保资源引用有效或调整语言检测逻辑优先级来修复。
-
-#### 环境变量的使用
-
-**官方方法**
-
-在[官方文档](https://nuxt.com.cn/docs/migration/runtime-config#runtime-config)中有使用说明，首先在`nuxt.config.ts`首层中添加如下内容，ts会自动补全
-
-```ts
-  runtimeConfig: {
-    public: {
-      BASE_URL: 'example url',
-      test: 'test value',
-    },
-  },
-```
-
-然后再项目中使用
-
-```ts
-const config = useRuntimeConfig()
-console.log('BASE_URL', config.public.BASE_URL) // example url
-console.log('test', config.public.test) // test value
-```
-
-**dotenv使用**
-
-在项目根目录创建 `.env.dev`和`.env.production`,然后修改package.json中的运行指令如下
-
-```json
-  "scripts": {
-    "build": "nuxi build --dotenv .env.production",
-    "dev": "nuxi dev --dotenv .env.dev"
-  	}
-```
-
-添加如下字段到dotenv文件中
-
-```json
-// .env.dev
-NUXT_BASE_ROOT = 'https://baidu.com'
-
-//.env.production
-NUXT_BASE_ROOT = 'https://bing.com'
-```
-
-在`nuxt.config.ts`首层中添加如下内容
-
-```ts
-  runtimeConfig: {
-    public: {
-      BASE_URL: process.env.NUXT_BASE_ROOT,
-    },
-  },
-```
-
-然后再项目中使用
-
-```ts
-const config = useRuntimeConfig()
-console.log('BASE_URL', config.public.BASE_URL) //  https://baidu.com 或 https://bing.com
-```
-
-#### 请求封装
-
-> 注意:针对首次请求完成的后续异步请求,NUXT3官方不推荐继续在nuxt项目中引入和使用axios,提倡使用NUXT3的$fetch
-
-更多详细使用见NUXT3的原请求库[ofetch](https://github.com/unjs/ofetch)
-
-```ts
-type fetchType = typeof $fetch
-type ReqType = Parameters<fetchType>[0]
-type FetchOptions = Parameters<fetchType>[1]
-type BodyType = RequestInit['body']
-
-export function useRequest<T = unknown>(
-  request: ReqType,
-  opt: FetchOptions,
-  body?: BodyType,
-) {
-  // const router = useRouter()
-  // const route = useRoute()
-  const config = useRuntimeConfig()
-  const token = useCookie('token')
-  const defaultopt = {
-    method: 'post',
-    baseUrl: config.public.BASE_URL,
-    Headers: { token: token.value },
-    body,
-    onResponseError({ response }) {
-      console.log('cuowu', response)
-    },
-    async onResponse({ request, response, options }) {
-      // Log response
-      console.log('[请求返回]', request, response.status, response.body)
-    },
-    async onRequest({ request, options }) {
-      // Log request
-      console.log('[发送请求]', request, options)
-      options.query = options.query || {}
-      options.query.t = new Date()
-    },
-  } as FetchOptions
-  return $fetch<T>(request, useMerge(defaultopt, opt))
-}
-```
-
-其他NUXT功能已提供示例,具体使用见官方[文档](https://nuxt.com/)
-
-路由守卫
-
-`/middleware`目录下已`.global.ts`结尾的函数将自动在全局路由时执行
-
-```ts
-// 文件名的 global 表示全局所以路由都会执行
-export default defineNuxtRouteMiddleware((to, from) => {
-  // const auth = useState('auth')
-  console.log('全局触发路由 from:', from, ' to:', to,
-  )
-})
-```
-
-非`global`文件需要在组件中指定
-
-```ts
-definePageMeta({
-  middleware: ['root-middle'], // 指定执行
-})
-```
+5.  **启动服务**
+    ```bash
+    pnpm dev

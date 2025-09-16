@@ -1,3 +1,282 @@
 {
-  "kk": "测试"
+  "kk": "测试",
+  "layout": {
+    "admin": {
+      "title": "[这是HOME的布局]"
+    }
+  },
+  "cart": {
+    "title": "您的购物车 ({count})",
+    "empty": "您的购物车是空的。",
+    "subtotal": "小计",
+    "shipping_note": "运费和税费将在结账时计算。",
+    "checkout": "结账"
+  },
+  "notFound": {
+    "title": "404 - 页面未找到",
+    "description": "抱歉，您正在寻找的页面无法找到。",
+    "goHome": "返回首页"
+  },
+  "about": {
+    "hero": {
+      "title": "关于我们",
+      "subtitle": "一个专业的设备自修教程平台——让维修变得简单、清晰、可行。"
+    },
+    "partners": {
+      "title": "合作伙伴",
+      "description": "我们与具有前瞻性思维的制造商合作，他们通过提供原厂零件、技术文档和专家指导来支持可修复性——所有这些都是为了帮助您自信地修理您的设备。"
+    }
+  },
+  "home": {
+    "whyChooseUs": {
+      "title": "为什么选择我们？",
+      "expertGuides": {
+        "title": "专家指南",
+        "description": "带有视觉效果的分步指南使复杂的维修变得简单明了"
+      },
+      "originalParts": {
+        "title": "原厂零件",
+        "description": "OEM零件和优质替代品，确保自行维修的质量和设备性能"
+      },
+      "communitySupport": {
+        "title": "社区支持",
+        "description": "活跃的用户社区，用于分享经验、回答问题和共同学习"
+      }
+    },
+    "featuredCategories": {
+      "title": "特色分类",
+      "subtitle": "按设备类别浏览维修指南。我们为您的设备提供全面的教程。",
+      "guides": "{count} 个指南",
+      "robotVacuums": {
+        "name": "扫地机器人",
+        "description": "各种品牌的扫地机器人"
+      },
+      "electricScooters": {
+        "name": "电动滑板车",
+        "description": "各种品牌的电动滑板车"
+      },
+      "roboticLawnMowers": {
+        "name": "机器人割草机",
+        "description": "各种品牌的割草机"
+      },
+      "smartPhones": {
+        "name": "智能手机",
+        "description": "各种品牌的智能手机"
+      },
+      "headphones": {
+        "name": "耳机/耳塞",
+        "description": "各种品牌的耳机/耳塞"
+      },
+      "powerStation": {
+        "name": "便携式电源",
+        "description": "各种品牌的便携式电源"
+      }
+    },
+    "popularTutorials": {
+      "title": "热门教程",
+      "subtitle": "本月查看最多的维修指南",
+      "viewAll": "查看所有教程",
+      "byAuthor": "作者 {author} · {source}",
+      "roborock": {
+        "category": "扫地机器人",
+        "title": "石头 Q5 边刷电机更换",
+        "description": "边刷电机驱动边刷清扫难以触及的角落的污垢和碎屑...",
+        "duration": "20 分钟",
+        "difficulty": "简单",
+        "author": "[作者姓名]",
+        "source": "平台作者"
+      },
+      "unicool": {
+        "category": "电动滑板车",
+        "title": "Unicool Titan T8 电池更换",
+        "description": "本指南将向您展示如何拆卸 Titan T8 电动滑板车中的电池。这涉及到一个完整的....",
+        "duration": "30 - 60 分钟",
+        "difficulty": "中等",
+        "author": "[作者姓名]",
+        "source": "制造商"
+      },
+      "luba": {
+        "category": "机器人割草机",
+        "title": "LUBA 2 AWD 电机更换",
+        "description": "边刷电机驱动边刷清扫难以触及的角落的污垢和碎屑...",
+        "duration": "40 - 85 分钟",
+        "difficulty": "困难",
+        "author": "[作者姓名]",
+        "source": "社区用户"
+      }
+    }
+  },
+  "common": {
+    "cancel": "取消",
+    "confirm": "确定",
+    "save": "保存",
+    "tip": "提示"
+  },
+  "customerEditor": {
+    "placeholder": "输入格式化文本，例如：***加粗*** ~~斜体~~ ++下划线++ [link|https://example.com|new_window=true|链接文本]",
+    "dialog": {
+      "insertLink": {
+        "title": "插入链接",
+        "textLabel": "链接文本",
+        "textPlaceholder": "请输入链接文本",
+        "urlLabel": "链接地址",
+        "urlPlaceholder": "请输入内容",
+        "newWindow": "在新窗口打开"
+      }
+    }
+  },
+  "tutorialStep": {
+    "saveMessage": "保存操作",
+    "editTitle": {
+      "promptMessage": "请输入标题",
+      "title": "编辑标题",
+      "errorMessage": "标题不能为空"
+    },
+    "setImage": {
+      "promptMessage": "请输入图片 URL",
+      "title": "设置图片"
+    },
+    "imageIndexError": "无法找到图片索引",
+    "editingStep": "正在编辑步骤 {sort}",
+    "stepType": "步骤类型：",
+    "image": "图片",
+    "media": "媒体",
+    "noImageSelected": "未选择图片",
+    "video": "视频",
+    "dialog": {
+      "editImage": {
+        "title": "编辑图片"
+      },
+      "cropImage": {
+        "title": "裁剪图片"
+      }
+    }
+  },
+  "user": {
+    "defaultName": "修改看看!这是来自pinia的默认值,同时也是title的值",
+    "guest": "游客"
+  },
+  "richEditor": {
+    "placeholder": "请输入内容..."
+  },
+  "oldd": {
+    "about": "关于",
+    "tutorial": "教程",
+    "adminCSR": "后台（客户端渲染 CSR）",
+    "ssrRequest": "下面的异步请求内容是在服务端完成的",
+    "click": "点击",
+    "button": "按钮",
+    "csrRequest": "发送客户端的异步请求",
+    "envUsage": "env 的使用",
+    "currentBaseUrl": "当前 NUXT_BASE_ROOT 为:",
+    "openConsole": "打开控制台，方便查看钩子函数的执行情况",
+    "editor": "编辑器"
+  },
+  "login": {
+    "title": "登录",
+    "usernameLabel": "用户名",
+    "usernamePlaceholder": "请输入用户名",
+    "passwordLabel": "密码",
+    "passwordPlaceholder": "请输入密码",
+    "captchaLabel": "验证码",
+    "captchaPlaceholder": "请输入验证码",
+    "captchaAlt": "验证码图片",
+    "loginButton": "登 录",
+    "captchaError": "获取验证码失败，请重试。",
+    "loginSuccess": "登录成功！",
+    "loginFailed": "登录失败，请检查您的凭据并重试。"
+  },
+  "header": {
+    "tutorials": "教程",
+    "partsStore": "零件商店",
+    "searchPlaceholder": "搜索维修指南",
+    "cart": "购物车",
+    "signIn": "登录",
+    "admin": "管理后台",
+    "logout": "退出登录",
+    "logoutConfirmTitle": "确认退出",
+    "logoutConfirmText": "您确定要退出登录吗？",
+    "confirmButtonText": "确定",
+    "cancelButtonText": "取消"
+  },
+  "guide": {
+    "type": {
+      "label": "类型",
+      "replace": "替换",
+      "disassemble": "拆卸",
+      "teardown": "拆解"
+    },
+    "common": {
+      "tabs": {
+        "introduction": "介绍",
+        "details": "详情"
+      },
+      "form": {
+        "device": "设备",
+        "selectPlaceholder": "请选择",
+        "partName": "您要更换什么部件？",
+        "title": "标题",
+        "introduction": "介绍",
+        "timeEstimate": "预计时间",
+        "difficulty": "难度评估",
+        "difficultyOptions": {
+          "moderate": "中等",
+          "very_easy": "非常简单",
+          "difficult": "困难",
+          "very_difficult": "非常困难"
+        },
+        "tools": "工具",
+        "parts": "零件",
+        "conclusion": "总结",
+        "coverImage": "封面图片"
+      },
+      "dialog": {
+        "editImage": "编辑图片",
+        "cropImage": "裁剪图片"
+      },
+      "message": {
+        "deleteImageConfirm": "确定要删除这张图片吗？",
+        "validation": {
+          "device": "请选择设备",
+          "name": "请输入部件名称",
+          "time": "请输入有效的时间范围",
+          "level": "请选择难度",
+          "img": "请上传图片"
+        }
+      }
+    },
+    "add": {
+      "next": "下一步",
+      "previous": "上一步",
+      "create": "创建",
+      "message": {
+        "formError": "表单校验失败"
+      }
+    },
+    "edit": {
+      "tabs": {
+        "guideSteps": "指南步骤"
+      },
+      "message": {
+        "imageContextError": "无法找到图片上下文",
+        "deleteSuccess": "删除成功",
+        "saveSuccess": "保存成功",
+        "saveFailed": "保存失败",
+        "changesSaved": "更改已保存",
+        "deleteStepConfirm": "您确定要删除此步骤吗？此操作无法撤销。",
+        "stepDeleted": "步骤已删除",
+        "stepNotFound": "未找到要删除的步骤",
+        "newStepAdded": "新步骤已添加",
+        "deleteLastStepError": "这是最后一步，无法删除。",
+        "deleteFailed": "删除步骤失败"
+      },
+      "steps": {
+        "title": "步骤",
+        "edit": "编辑",
+        "add": "新增步骤",
+        "newTitle": "新步骤 {sort}"
+      },
+      "loading": "加载中..."
+    }
+  }
 }

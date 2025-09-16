@@ -3,11 +3,10 @@ module.exports = {
     {
       name: 'offical-site',
       script: '.output/server/index.mjs',
-      args: 'start',
       instances: 3,
       autorestart: true,
       watch: false,
-      max_memory_restart: '512M',
+      max_memory_restart: '1024M',
       merge_logs: true,
       log_date_format: 'YYYY-MM-DD HH:mm Z',
       restart_delay: 1000,

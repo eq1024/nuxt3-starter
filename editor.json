@@ -1,0 +1,27 @@
+{
+  "image": ["https://image1.com"],
+  "video": ["https://video1.com"],
+  "content": [
+    {
+      "row-text": "text1",
+      "children": [
+        {
+          "row-text": "text-sub1",
+          "children": [
+            {
+              "row-text": "text-sub2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row-text": "text2",
+      "children": [
+        {
+          "row-text": "text2-sub1"
+        }
+      ]
+    }
+  ]
+}

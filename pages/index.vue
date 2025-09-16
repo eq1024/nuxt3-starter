@@ -1,107 +1,128 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-// const router = useRouter()
+import { ref } from 'vue'
+import CustomerEditor from '~/components/CustomerEditor.vue'
 
-// const time1 = new Date().getTime()
+const tutorialData = ref<App.TreeNode[]>([
+  {
+    'row-text': 'Welcome to the Customer Editor Demo!',
+    'type': 1,
+    'children': [
+      {
+        'row-text': 'This is a nested item.',
+        'type': 0,
+        'children': [],
+      },
+    ],
+  },
+  {
+    'row-text': 'Click on any text to start editing.',
+    'type': 0,
+    'children': [],
+  },
+])
 
-const post1 = ref('')
-const post2 = ref('')
-const EditorShow = ref(false)
-const { userName } = storeToRefs(useUserStore())
-interface post {
-  userId: string
-  id: string
-  title: string
-  body: string
-}
-useHead({
-  title: userName,
-})
-definePageMeta({
-  middleware: ['root-middle'],
-})
+const activeEditorPath = ref<number[] | null>(null)
 
-/**
- * 在服务端的请求,渲染进html后一并返回
- */
-const { data } = await useFetch<post>('https://jsonplaceholder.typicode.com/posts/5')
-post1.value = JSON.stringify(data.value?.body) || ''
-/**
- * 在客户的请求
- */
-function getAsyncData() {
-  useRequest<post>('https://jsonplaceholder.typicode.com/posts/1', { method: 'GET' }).then((res) => {
-    console.log('🤔 - :34 - useRequest<post> - res--> ', res)
-
-    post2.value = JSON.stringify(data.value?.body) || ''
-  })
+function handleSetActiveEditor(path: number[] | null) {
+  activeEditorPath.value = path
 }
 
-// .env的使用
-const config = useRuntimeConfig()
-const NUXT_BASE_ROOT = config.public.BASE_URL
+function handleMoveNodeUp(event: { node: App.TreeNode, currentIndex: number, path: number[] }) {
+  const { node, currentIndex, path } = event
+  // Find parent array
+  let parent = tutorialData.value
+  for (let i = 0; i < path.length - 1; i++) {
+    parent = parent[path[i]].children!
+  }
+  // Remove from current position
+  parent.splice(currentIndex, 1)
 
-onMounted(() => {
-  // const commonJS = document.createElement('script')
-  // commonJS.src = '/js/common.js'
-  // document.body.append(commonJS)
-})
+  // Find new parent array and add to it
+  let newParent = tutorialData.value
+  const newPath = path.slice(0, -1)
+  for (let i = 0; i < newPath.length - 1; i++) {
+    newParent = newParent[newPath[i]].children!
+  }
+  const insertIndex = newPath[newPath.length - 1] + 1
+  newParent.splice(insertIndex, 0, node)
+}
 </script>
 
 <template>
-  <div>
-    <!-- <div>时间1 : {{ time1 }}</div> -->
-    <div class="fromSiv">
-      <NuxtLinkLocale to="/admin">
-        Admin(客户端渲染CSR)
-      </NuxtLinkLocale>
-      <div style="padding-bottom: 20px;">
-        下面的异步请求内容是在服务端完成的
-        <!-- {{ $t('kk') }} -->
+  <div class="w-full relative overflow-hidden">
+    <div class="gradient-bg" />
+    <main class="container mx-auto px-6 py-24 relative z-10">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-4">
+          Content, Reimagined.
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+          Experience a seamless, node-based editor. Effortlessly structure your ideas with intuitive controls and a clean, focused interface.
+        </p>
       </div>
-      <div>{{ post1 }}</div>
-    </div>
-    <div class="fromSiv bg-red">
-      <div style="padding-bottom: 20px;">
-        点击<button @click="getAsyncData">
-          按钮
-        </button>发送客户端的异步请求
+
+      <div class="max-w-5xl mx-auto bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700/50 rounded-xl shadow-2xl shadow-gray-200/50 dark:shadow-black/20 p-6 sm:p-8 md:p-10">
+        <div class="mb-10">
+          <h2 class="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+            Key Features
+          </h2>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-600 dark:text-gray-300">
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Rich Text Formatting (Bold, Italic, Underline)
+            </li>
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Hierarchical Nesting & Indentation
+            </li>
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Dynamic Item Management (Add/Remove)
+            </li>
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Hyperlink Insertion
+            </li>
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Seamless Click-to-Edit Interface
+            </li>
+            <li class="flex items-center">
+              <Icon name="carbon:checkmark-outline" class="mr-3 text-green-500 text-xl" />Customizable List Markers
+            </li>
+          </ul>
+        </div>
+        <div class="border-t border-gray-200 dark:border-gray-600 my-8" />
+        <CustomerEditor
+          v-model:tutorial="tutorialData"
+          :depth="0"
+          :path="[]"
+          :active-editor-path="activeEditorPath"
+          @set-active-editor="handleSetActiveEditor"
+          @move-node-up="handleMoveNodeUp"
+        />
       </div>
-      <div>{{ post2 || '' }}</div>
-    </div>
-    <div class="fromSiv">
-      <div>env的使用</div>
-      <div>当前NUXT_BASE_ROOT为:</div>
-      <div style="background-color: bisque;">
-        {{ NUXT_BASE_ROOT }}
-      </div>
-    </div>
-    <div class="fromSiv">
-      <div>
-        <input id="" v-model="userName" style="width: 600px;height: 50px; line-height: 50px;" type="text" name="">
-      </div>
-    </div>
-    <div class="fromSiv">
-      打开控制台,方便查看钩子函数的执行情况
-    </div>
-    <el-button @click="EditorShow = !EditorShow">
-      编辑器
-    </el-button>
-    <div style="max-width: 600px;margin: 0 auto;">
-      <LazyEditor v-if="EditorShow" />
-    </div>
+    </main>
   </div>
 </template>
 
-<style lang="scss">
-.fromSiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px dashed #222;
-  border-radius: 5px;
-  flex: 0 0 50vw;
-  padding: 20px;
-  margin:10px 100px;
+<style scoped>
+.gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>

@@ -31,8 +31,11 @@ const processedContent = computed(() => {
 </script>
 
 <template>
-  <div class="formatted-text">
-    <div v-html="processedContent" />
+  <div class="formatted-text min-w-200px">
+    <div v-if="processedContent" v-html="processedContent" />
+    <div v-else>
+      ㅤ
+    </div>
   </div>
 </template>
 
